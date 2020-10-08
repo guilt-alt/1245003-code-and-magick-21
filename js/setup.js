@@ -89,6 +89,6 @@ userDialog.classList.remove(`hidden`);
 
 const arrayRandomWizards = getRandomWizard();
 
-createWizards();
+createWizards(arrayRandomWizards);
 
 userDialog.querySelector(`.setup-similar`).classList.remove(`hidden`);
