@@ -71,14 +71,13 @@
         action="https://21.javascript.pages.academy/code-and-magick"
         method="post"
         enctype="multipart/form-data"
-        autocomplete="off"
-        accept="image/png, image/jpeg">
+        autocomplete="off">
 
     <div class="setup-title">
       <div class="setup-user">
         <div class="upload">
           <img class="setup-user-pic" src="img/user-1.jpg"/>
-          <input type="file" name="avatar">
+          <input type="file" name="avatar" accept="image/png, image/jpeg">
         </div>
         <label>
           <input type="text" name="username"
@@ -182,31 +181,14 @@
   </div>
 </template>
 
-<script>
-  var fireballSize = 22;
-
-  var getFireballSpeed = function (isMovingLeft) {
-    return isMovingLeft ? 2 : 5;
-  }
-
-  var wizardWidth = 70;
-
-  var getWizardHeight = function () {
-    return 1.337 * wizardWidth;
-  }
-
-  var wizardSpeed = 3;
-
-  var getWizardX = function (gameFieldWidth) {
-    return (gameFieldWidth - wizardWidth) / 2;
-  }
-
-  var getWizardY = function (gameFieldHeight) {
-    return gameFieldHeight / 3;
-  }
-</script>
-<script src="js/setup.js"></script>
+<script src="js/util.js"></script>
+<script src="js/settings.js"></script>
 <script src="js/stat.js"></script>
+<script src="js/setup.js"></script>
+<script src="js/similarWizards.js"></script>
+<script src="js/validation.js"></script>
+<script src="js/customWizard.js"></script>
+<script src="js/movePopup.js"></script>
 <script src="js/game.js"></script>
 
 </body>
