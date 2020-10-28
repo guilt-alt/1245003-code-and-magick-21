@@ -1,42 +1,7 @@
 'use strict';
 
 (function () {
-  const NAMES = [
-    `Иван`,
-    `Хуан Себастьян`,
-    `Мария`,
-    `Кристоф`,
-    `Виктор`,
-    `Юлия`,
-    `Люпита`,
-    `Вашингтон`
-  ];
-
-  const SURNAMES = [
-    `да Марья`,
-    `Верон`,
-    `Мирабелла`,
-    `Вальц`,
-    `Онопко`,
-    `Топольницкая`,
-    `Нионго`,
-    `Ирвинг`
-  ];
-
-  const getRandomWizard = function () {
-    let generatedWizards = [];
-
-    for (let i = 0; i < 4; i++) {
-      let object = {
-        name: `${window.util.getRandomItem(NAMES)} ${window.util.getRandomItem(SURNAMES)}`,
-        coatColor: window.util.getRandomItem(window.util.coatColors),
-        eyesColor: window.util.getRandomItem(window.util.eyesColors)
-      };
-      generatedWizards.push(object);
-    }
-
-    return generatedWizards;
-  };
+  const WIZARDS_MAX_COUNT = 4;
 
   const renderWizard = function (wizards) {
     const similarWizardTemplate = document.querySelector(`#similar-wizard-template`)
@@ -45,7 +10,7 @@
 
     const wizardElement = similarWizardTemplate.cloneNode(true);
     wizardElement.querySelector(`.setup-similar-label`).textContent = wizards.name;
-    wizardElement.querySelector(`.wizard-coat`).style.fill = wizards.coatColor;
+    wizardElement.querySelector(`.wizard-coat`).style.fill = wizards.colorCoat;
     wizardElement.querySelector(`.wizard-eyes`).style.fill = wizards.eyesColor;
 
     return wizardElement;
@@ -55,14 +20,12 @@
     const similarListElement = document.querySelector(`.setup-similar-list`);
 
     const fragment = document.createDocumentFragment();
-    for (let i = 0; i < arr.length; i++) {
+    for (let i = 0; i < WIZARDS_MAX_COUNT; i++) {
       fragment.appendChild(renderWizard(arr[i]));
     }
 
     return similarListElement.appendChild(fragment);
   };
 
-  const arrayRandomWizards = getRandomWizard();
-
-  createWizards(arrayRandomWizards);
+  window.backend.load(createWizards, window.backend.errorServerFragment);
 }());

@@ -38,6 +38,8 @@
     wizardFireball.addEventListener(`click`, window.customWizard.setWizardFireball);
 
     dialogHandle.addEventListener(`mousedown`, window.movePopup.dialogHandleMove);
+
+    window.util.form.addEventListener(`submit`, window.customWizard.customWizardSave, window.backend.errorServerFragment);
   };
 
   const closePopup = function () {
@@ -57,6 +59,8 @@
     wizardFireball.removeEventListener(`click`, window.customWizard.setWizardFireball);
 
     dialogHandle.removeEventListener(`mousedown`, window.movePopup.dialogHandleMove);
+
+    window.util.form.removeEventListener(`submit`, window.customWizard.customWizardSave, window.backend.errorServerFragment);
   };
 
   userDialogOpen.addEventListener(`click`, function () {
